@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->paragraph,
             'price' => $this->faker->randomFloat(2, 10, 500),
             'stock' => $this->faker->numberBetween(1, 100),
-            'image' => $this->faker->imageUrl(640, 480, 'product'),
+            'image' => 'https://placehold.co/640x480/00aa55/FFFFFF?text=' . urlencode($this->faker->word()),
         ];
     }
 }
