@@ -7,10 +7,16 @@
       Nombre:
       <input type="text" name="name">
     </label>
-    <label for="">
-      Categoría:
-      <input type="text" name="category">
-    </label>
+    <fieldset>
+      <legend>Categorías:</legend>
+      @foreach ($categories as $category)
+        <label>
+          <input type="checkbox" name="categories[]" value="{{ $category->id }}">
+          {{ $category->name }}
+        </label><br>
+      @endforeach
+    </fieldset>
+    
     <label for="">
       Descripción:
       <textarea name="description"></textarea>
