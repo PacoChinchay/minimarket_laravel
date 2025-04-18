@@ -11,7 +11,7 @@
             <div>
                 <p>Categorías:
                     @foreach ($product->categories as $category)
-                        <a href={{ $category->name }}>{{ $category->name }},</a>
+                        <a href="/categories">{{ $category->name }},</a>
                     @endforeach
                 </p>
             </div>

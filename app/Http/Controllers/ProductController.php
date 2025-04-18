@@ -29,13 +29,17 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $product = new Product();
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->stock = $request->stock;
-        $product->image = $request->image;
-        $product->save();
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'image' => 'nullable|string',
+            'categories' => 'nullable|array',
+            'categories.*' => 'exists:categories,id',
+        ]);
+
+        $product = Product::create($validated);
 
         if ($request->has('categories')) {
             $product->categories()->attach($request->categories);
@@ -46,33 +50,39 @@ class ProductController extends Controller
 
     public function edit($product)
     {
-        $product = Product::find($product);
-        return view('products.edit', compact('product'));
+        $product = Product::with('categories')->findOrFail($product);
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $product)
     {
-        $product = Product::find($product);
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'image' => 'nullable|string',
+            'categories' => 'nullable|array',
+            'categories.*' => 'exists:categories,id',
+        ]);
 
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->stock = $request->stock;
-        $product->image = $request->image;
-        $product->save();
+        $product = Product::findOrFail($product);
+        $product->update($validated);
 
-        $category = Category::firstOrCreate(['name' => $request->category]);
-
-        $product->categories()->sync([$category->id]);
-        // $product->categories()->sync($request->categories);
+        if ($request->has('categories')) {
+            $product->categories()->sync($request->categories);
+        }
 
         return redirect("/products/{$product->id}");
     }
 
+
     public function destroy($product)
     {
-        $product = Product::find($product);
+        $product = Product::findOrFail($product);
+        $product->categories()->detach();
         $product->delete();
-        return redirect("/products");
+        return redirect("/products")->with('success', 'Producto eliminado');
     }
 }

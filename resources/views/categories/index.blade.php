@@ -14,7 +14,7 @@
     <tbody>
       @foreach ($categories as $category)
         <tr>
-          <td>{{ $category->name }}</td>
+          <td><a href="/categories/{{$category->id}}">{{ $category->name }}</a></td>
           <td>{{ $category->products_count }}</td>
           <td>
             <a href="/categories/{{ $category->id }}/edit">✏️ Editar</a> |
