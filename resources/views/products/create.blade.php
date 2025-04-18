@@ -1,4 +1,5 @@
 <x-app-layout>
+  <a href="/products">volver</a>
   <h1>Crear nuevo producto</h1>
 
   <form action="/products" method="POST">
@@ -15,6 +16,7 @@
           {{ $category->name }}
         </label><br>
       @endforeach
+      <a href="/categories/create">agregar</a>
     </fieldset>
     
     <label for="">
