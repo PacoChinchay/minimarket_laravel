@@ -4,10 +4,15 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ProductController::class, 'index']);
+Route::get('/', [StoreController::class, 'index']);
+Route::get('/store/products', [StoreController::class, 'products']);
+Route::get('/store/products/{product}', [StoreController::class, 'showProduct']);
+Route::get('/store/categories/{category}', [StoreController::class, 'category']);
+
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/create', [ProductController::class, 'create']);
@@ -35,3 +40,4 @@ Route::post('/users', [UserController::class, 'store']);
 Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 Route::put('/users/{user}', [UserController::class, 'update']);
 Route::delete('/users/{user}', [UserController::class, 'destroy']);
+
