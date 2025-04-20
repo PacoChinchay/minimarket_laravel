@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
@@ -41,3 +42,10 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 Route::put('/users/{user}', [UserController::class, 'update']);
 Route::delete('/users/{user}', [UserController::class, 'destroy']);
 
+Route::view('/login', "login")->name('login');
+Route::view('/register', "register")->name('register');
+Route::view('/private', "secret")->middleware('auth')->name('private');
+
+Route::post('/validate-register', [LoginController::class, 'register'])->name('validate-register');
+Route::post('/star-session', [LoginController::class, 'login'])->name('star-session');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
