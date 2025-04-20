@@ -1,13 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <x-app-layout>
-    <section>
+    <section class="container mx-auto mt-8 flex flex-col md:flex-row gap-8">
       <a href="/products">volver</a>
-        <div>
-            <img src="{{$product->image}}" alt="{{$product->name}}">
+        <div class="w-full md:w-1/2 flex justify-center">
+            <img src="imagenes/Product.png" alt="Producto" class="max-w-full h-auto">
         </div>
         <div>
-            <h1>{{ $product->name }}</h1>
-            <span>{{ $product->price }}</span>
+            <h1 class="text-2xl font-bold mb-2">{{ $product->name }}</h1>
+            <span class="text-lg font-semibold mb-4 text-gray-700">{{ $product->price }}</span>
+            <div class="flex items-center gap-4 mb-6">
+                <div class="flex items-center border rounded">
+                    <span class="bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-l">Stock</span>
+                    <span class="text-gray-700 font-semibold py-2 px-4">{{ $product->stock }}</span>
+                </div>
 
+            </div>
+                
             <div>
                 <p>Categorías:
                     @foreach ($product->categories as $category)
@@ -15,7 +23,7 @@
                     @endforeach
                 </p>
             </div>
-            <details name="product">
+            <details class="bg-gray-100 p-4 rounded cursor-pointer w-140" name="product">
                 <summary>Descripción</summary>
                 {{ $product->description }}
                 Cereal bañado con chocolate x 350 gr 😋🍫
@@ -30,7 +38,7 @@
                 favorito
                 🍪🧁🍩🎂🍨
             </details>
-            <details name="product">
+            <details class="bg-gray-100 p-4 rounded w-140 cursor-pointer mt-5" name="product">
                 <summary>Zonas de delibery</summary>
                 Información sobre Pedidos y Envíos
                 Zona 1: Barranco, San Isidro, Surquillo, Miraflores y Lince.
@@ -68,7 +76,7 @@
                 edificios
                 multifamiliares o de oficinas el pedido podrá ser entregado al responsable de portería.
             </details>
-            <details name="product">
+            <details name="product" class="pt-5">
                 <summary>¿Ya lo probaste? ¡Cuéntanos que tal!</summary>
             </details>
         </div>
