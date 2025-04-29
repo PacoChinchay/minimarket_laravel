@@ -1,5 +1,6 @@
 <x-app-layout>
-  <h1>Bienvenido a la tienda</h1>
+  <x-header/>
+  @include('components.home-slider.HomeSlider')
 
   <h2>Categorías</h2>
   <ul>
