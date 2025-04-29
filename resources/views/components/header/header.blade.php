@@ -31,7 +31,9 @@
         </span>
       </div>
       <div class="cursor-pointer">
-        <img src="header/user.svg" alt="Usuario" class="w-6 h-6">
+        <a href="/login">
+          <img src="header/user.svg" alt="Usuario" class="w-6 h-6">
+        </a>
       </div>
     </div>
   </header>
