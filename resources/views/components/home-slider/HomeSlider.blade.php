@@ -1,31 +1,33 @@
-<div class="slider">
-  <div class="list">
-    <div class="item">
-      <img src="{{ asset('banners/banner-1.jpg') }}">
+<body>
+  <div class="slider">
+    <div class="list">
+      <div class="item">
+        <img src="{{ asset('banners/banner-1.jpg') }}">
+      </div>
+      <div class="item">
+        <img src="{{ asset('banners/banner-2.jpg') }}">
+      </div>
+      <div class="item">
+        <img src="{{ asset('banners/banner-3.jpg') }}">
+      </div>
     </div>
-    <div class="item">
-      <img src="{{ asset('banners/banner-2.jpg') }}">
+  
+    <div class="buttons">
+      <div id="prev">&lt;</div>
+      <div id="next">&gt;</div>
     </div>
-    <div class="item">
-      <img src="{{ asset('banners/banner-3.jpg') }}">
-    </div>
+  
+    <ul class="dots">
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+    </ul>
   </div>
-
-  <div class="buttons">
-    <div id="prev">&lt;</div>
-    <div id="next">&gt;</div>
-  </div>
-
-  <ul class="dots">
-    <li class="active"></li>
-    <li></li>
-    <li></li>
-  </ul>
-</div>
+</body>
 
 <style>
   body { margin: 0; font-family: monospace; }
-  .slider { width: 100vw; max-width: 100vw; height: 700px; margin: auto; position: relative; overflow: hidden; }
+  .slider { width: 100%; max-width: 100vw; height: 700px; margin: auto; position: relative; overflow: hidden; }
   .list { position: absolute; top: 0; left: 0; height: 100%; display: flex; width: max-content; transition: 1s; }
   .list .item img { width: 100vw; max-width: 100vw; height: 100%; object-fit: cover; }
   .buttons { position: absolute; top: 45%; left: 5%; width: 90%; display: flex; justify-content: space-between; }

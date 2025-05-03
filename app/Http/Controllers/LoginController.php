@@ -10,18 +10,23 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     public function register(Request $request) {
-        // todo:validar datos
-        $user = new User();
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-
-        $user->save();
+        $validated = $request->validate([
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+            'name' => 'required',
+        ]);
+    
+        $user = User::create([
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+            'name' => $validated['name'],
+            'role_id' => 1,
+        ]);
 
         Auth::login($user);
         
-        return redirect('/private');
+        return redirect('/');
     }
 
     public function login(Request $request) {
