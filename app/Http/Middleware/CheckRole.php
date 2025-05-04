@@ -18,7 +18,7 @@ class CheckRole
     public function handle($request, Closure $next, ...$roles)
     {
         if (!Auth::check()) {
-            return redirect()->route('login'); // o abort(403)
+            return redirect()->route('login');
         }
 
         if (!in_array(Auth::user()->role->name, $roles)) {

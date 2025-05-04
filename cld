@@ -1,0 +1,83 @@
+[33mcommit 250e967fe2fe5b61de493750383a5c6b2bed80db[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Sat May 3 01:27:35 2025 -0500
+
+    feat: add transitions
+
+[33mcommit 65a1e04d96b45d41e6c7c64fde205498c90166b2[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Sat May 3 01:03:05 2025 -0500
+
+    feat: add products
+
+[33mcommit 2b2fbe7d283d3fad523b0d6694a34a249e9a1627[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Tue Apr 29 02:19:56 2025 -0500
+
+    feat: login and register ogic, more beauty xd
+
+[33mcommit 90b043f6ec792945a07b58b014a69d5bb84f5458[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Tue Apr 29 01:59:45 2025 -0500
+
+    feat: trabajen oe
+
+[33mcommit 20598bc7f8a8b6ccbb562a90ed1a63a027bd38ff[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Sun Apr 20 02:46:57 2025 -0500
+
+    feat: login
+
+[33mcommit b1a8231f073747c9118da725ec0b96d5e0b70fe0[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Fri Apr 18 20:49:02 2025 -0500
+
+    feat: add store crud
+
+[33mcommit e99d832cd22cfab9ba79ff401524c2bd5a7c262f[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Thu Apr 17 23:51:17 2025 -0500
+
+    feat: add user controller
+
+[33mcommit b1aa86126779f931800de62904c97578f43149e4[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Thu Apr 17 22:41:36 2025 -0500
+
+    feat: add method show to categorucontroller
+
+[33mcommit 37b021a2d400f992fa68bbfc791b0164d5011889[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Sun Apr 13 17:10:13 2025 -0500
+
+    feat: Add store model
+
+[33mcommit f697cfff73445e9fdbaa7b1465e0a2fd5c463b15[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Sun Apr 13 02:14:18 2025 -0500
+
+    fead: add category crud
+
+[33mcommit f41f8394a2bf1fba8561961b0c56d3fd6f46a888[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Fri Apr 11 22:42:50 2025 -0500
+
+    fead: crud
+
+[33mcommit 7d3af9617126421c1f1c359f909d0745adf17724[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Fri Apr 11 20:54:13 2025 -0500
+
+    fead: add controllers
+
+[33mcommit b80b19556cc99013c21324fd42ab708f29e6bf1b[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Fri Apr 11 20:36:12 2025 -0500
+
+    refactor: change image urls
+
+[33mcommit 0ad2bfed77fca8c80db9d8ce386be4675f900116[m
+Author: PacoChinchay <pacochinchay350@gmail.com>
+Date:   Thu Apr 10 23:00:24 2025 -0500
+
+    first commit

@@ -2,52 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterLoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    public function register(Request $request) {
-
-        $validated = $request->validate([
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-            'name' => 'required',
-        ]);
+    public function register(RegisterLoginRequest $request) {
+        $validated = $request->validated();
     
         $user = User::create([
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
             'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
             'role_id' => 1,
         ]);
 
         Auth::login($user);
         
-        return redirect('/');
+        return redirect()->route('welcome');
     }
 
     public function login(Request $request) {
-        //todo: validar datos de entrada
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string'
+        ]);
 
         $credentials = [
-            "email" => $request->email,
-            "password" => $request->password,
-            // "isActive" => true
+            'email' => $validated['email'],
+            'password' => $validated['password'],
         ];
 
-        $remember = ($request->has('remember')? true : false);
+        $remember = $request->has('remember');
 
-        if(Auth::attempt($credentials, $remember)) {
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-
-            return redirect()->intended(route('private'));
-        } else {
-            //todo: mostrar error
-            return redirect('/login');
+            return redirect()->intended(route('store.index'));
         }
+
+        throw ValidationException::withMessages([
+            'email' => 'Sorry, incorrect credentials',
+        ]);
     }
 
     public function logout(Request $request) {
@@ -56,6 +55,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect()->route('login');
     }
 }
