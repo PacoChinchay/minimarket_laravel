@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class StoreController extends Controller
 {
     public function index() {
-        $featuredProducts = Product::latest()->take(6)->get();
+        $featuredProducts = Product::latest()->take(10)->get();
         $categories = Category::all();
 
         return view('store.index', compact('featuredProducts', 'categories'));
