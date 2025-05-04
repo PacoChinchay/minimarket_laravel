@@ -1,7 +1,6 @@
 <x-app-layout>
   <form action="/categories/{{$category->id}}" method="POST">
-    @csrf
-    @method('PUT')
+
 
     <label>
       Nombre: <input type="text" name="name" value="{{$category->name}}">

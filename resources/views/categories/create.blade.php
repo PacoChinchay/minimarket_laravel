@@ -1,8 +1,9 @@
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <x-app-layout>
-  <form action="/categories" method="POST">
+  <form class="" action="/categories" method="POST">
     @csrf
 
-    <label>
+    <label class="bg-gray-200 p-2">
       Nombre: <input type="text" name="name">
     </label>
     <label>
