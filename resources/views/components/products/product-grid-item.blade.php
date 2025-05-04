@@ -1,10 +1,12 @@
-<article class="bg-white rounded-2xl border border-[#84976d] shadow-md overflow-hidden hover:shadow-lg transition duration-300 flex flex-col items-center relative cursor-pointer hover:scale-105">
-  <div class="h-[300px] w-[300px] overflow-hidden">
-      <img src="{{ asset('products/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+<article class="bg-white rounded-2xl border border-[#84976d] shadow-md hover:shadow-xl transition-transform duration-300 transform hover:scale-105 max-w-sm w-full cursor-pointer">
+  <div class="h-[250px] w-full overflow-hidden rounded-t-2xl ">
+    <img src="{{ asset('products/' . $product->image) }}" alt="{{ $product->name }}" class="w-auto h-auto  object-cover transition-transform duration-300 hover:scale-110">
   </div>
-  <div class="p-4">
-      <h3 class="text-lg font-semibold text-[#5c8b2d] mb-2">{{ $product->name }}</h3>
-      <p class="text-sm text-[#84976d] mb-2">{{ $product->description }}</p>
-      <span class="block text-[#5c8b2d] font-bold text-lg absolute bottom-0 right-2">{{ number_format($product->price, 2) }} soles</span>
+  <div class="p-4 flex flex-col gap-2">
+    <h3 class="text-xl font-semibold text-[#5c8b2d]">{{ $product->name }}</h3>
+    <p class="text-sm text-[#6b7f4d]">{{ $product->description }}</p>
+    <div class="flex justify-end mt-2">
+      <span class="text-[#5c8b2d] font-bold text-lg">{{ number_format($product->price, 2) }} soles</span>
+    </div>
   </div>
 </article>
