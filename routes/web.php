@@ -49,3 +49,6 @@ Route::view('/private', "secret")->middleware('auth')->name('private');
 Route::post('/validate-register', [LoginController::class, 'register'])->name('validate-register');
 Route::post('/star-session', [LoginController::class, 'login'])->name('star-session');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/cart', [OrderController::class, 'cart'])->name('cart');
+Route::post('/store/cart/add', [OrderController::class, 'addToCart'])->name('cart.add');

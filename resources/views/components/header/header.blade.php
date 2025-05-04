@@ -25,7 +25,9 @@
     <!-- Carrito y Usuario -->
     <div class="flex items-center gap-6 ml-6">
       <div class="relative cursor-pointer">
+        <a href="store/cart">
         <img src="header/cart.svg" alt="Carrito" class="w-6 h-6">
+        </a>
         <span class="absolute -top-2 -right-2 bg-[#5C8B2D] text-white text-[10px] font-bold rounded-full px-1.5 py-0.5">
           0
         </span>
@@ -46,7 +48,7 @@
         class="transition-colors duration-300 hover:underline"
       >Inicio</a>
       <a 
-        href="/products" 
+        href="store/products" 
         class="transition-colors duration-300 hover:underline"
       >Productos</a>
       <a 
