@@ -28,4 +28,8 @@ class StoreController extends Controller
         $products = $category->products()->paginate(12);
         return view('store.category', compact('category', 'products'));
     }
+
+    public function aboutUs() {
+        return view('store.about-us');
+    }
 }

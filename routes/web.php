@@ -15,6 +15,7 @@ Route::get('/', [StoreController::class, 'index'])->name('store.index');
 Route::get('/store/products', [StoreController::class, 'products'])->name('store.products.index');
 Route::get('/store/products/{product}', [StoreController::class, 'showProduct'])->name('store.products.show');
 Route::get('/store/categories/{category}', [StoreController::class, 'category'])->name('store.categories.show');
+Route::get('/about-us', [StoreController::class, 'aboutUs'])->name('about-us');
 
 Route::middleware('auth')->controller(ProductController::class)->group(function () {
   Route::get('/products', 'index')->name('products.index');

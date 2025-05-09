@@ -61,9 +61,9 @@
     <div class="max-w-5xl mx-auto px-4">
         <nav class="flex justify-around gap-3 md:gap-0 text-[#5C8B2D] font-semibold text-xs md:text-base">
             <a href="/" class="py-1 hover:underline">Inicio</a>
-            <a href="/products" class="py-1 hover:underline">Productos</a>
+            <a href="{{route('store.products.index')}}" class="py-1 hover:underline">Productos</a>
             <a href="/offerts" class="py-1 hover:underline">Ofertas</a>
-            <a href="/about" class="py-1 hover:underline">Nosotros</a>
+            <a href={{route('about-us')}} class="py-1 hover:underline">Nosotros</a>
         </nav>
     </div>
 </footer>
