@@ -56,7 +56,7 @@
             <a href="/" class="transition-colors duration-300 hover:underline">Inicio</a>
             <a href="/products" class="transition-colors duration-300 hover:underline">Productos</a>
             <a href="/offerts" class="transition-colors duration-300 hover:underline">Ofertas</a>
-            <a href="/about-us" class="transition-colors duration-300 hover:underline">Sobre Nosotros</a>
+            <a href="/about" class="transition-colors duration-300 hover:underline">Sobre Nosotros</a>
         </nav>
     </div>
 </footer>

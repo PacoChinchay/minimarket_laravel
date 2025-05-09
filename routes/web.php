@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [StoreController::class, 'index'])->name('store.index');
@@ -37,7 +39,7 @@ Route::middleware('auth')->controller(CategoryController::class)->group(function
 
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store')->middleware('auth');
 
-Route::middleware('auth')->controller(UserController::class)->group(function() {
+Route::middleware(['auth', 'role:' .Role::ADMINISTRADOR])->controller(UserController::class)->group(function() {
   Route::get('/users', 'index')->name('users.index');
   Route::get('/users/create', 'create')->name('users.create');
   Route::post('/users', 'store')->name('users.store');
@@ -53,3 +55,5 @@ Route::view('/welcome', "welcome")->middleware('auth')->name('welcome');
 Route::post('/validate-register', [LoginController::class, 'register'])->name('auth.register');
 Route::post('/star-session', [LoginController::class, 'login'])->name('auth.login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('auth.logout');
+
+Route::get('/hello', [AlumnosController::class, 'hello']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,10 +21,15 @@ class UserController extends Controller
     }
 
     public function store(Request $request) {
+
+        $validated = $request->validate([
+            'role_id' => 'required|in:'.Role::CLIENTE.','.Role::EMPLEADO.','.Role::ADMINISTRADOR
+        ]);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->type = $request->type;
+        $user->role_id = $request->role_id;
         $user->password = Hash::make($request->password);
 
         $user->save();
@@ -39,7 +45,7 @@ class UserController extends Controller
         $user = User::find($user);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->type = $request->type;
+        $user->role_id = $request->role_id;
         $user->save();
         return redirect('/users');
     }

@@ -21,7 +21,9 @@ class CheckRole
             return redirect()->route('login');
         }
 
-        if (!in_array(Auth::user()->role->name, $roles)) {
+        $userRole = Auth::user()->role_id;
+
+        if (!in_array($userRole, $roles)) {
             abort(403, 'No tienes permisos para acceder.');
         }
 

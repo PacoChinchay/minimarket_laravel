@@ -1,26 +1,31 @@
 <x-app-layout>
     <a href="/users">volver</a>
-    <h1>crear un nuevo usuario</h1>
-    <form action="/users" method="POST">
+    <h1>Crear nuevo usuario (Admin)</h1>
+    <form action="{{ route('users.store') }}" method="POST">
         @csrf
-        <label>
-            Nombre: <input type="text" name="name">
-        </label>
-        <label>
-            Email: <input type="email" name="email">
-        </label>
-        <label>
-          Tipo:
-          <select name="type">
-            <option value="cliente">Cliente</option>
-            <option value="empleado">Empleado</option>
-            <option value="admin">Administrador</option>
-          </select>
-        </label>        
-        <label>
-            Contraseña: <input type="password" name="password">
-        </label>
-        <button type="submit">Crear</button>
+        <div>
+            <label>Nombre: <input type="text" name="name" required></label>
+        </div>
+        <div>
+            <label>Email: <input type="email" name="email" required></label>
+        </div>
+        <div>
+            @can('create', App\Models\User::class)
+                <label>
+                    Rol:
+                    <select name="role_id">
+                        <option value="{{ Role::CLIENTE }}">Cliente</option>
+                        <option value="{{ Role::EMPLEADO }}">Empleado</option>
+                        <option value="{{ Role::ADMINISTRADOR }}">Administrador</option>
+                    </select>
+                </label>
+            @else
+                <input type="hidden" name="role_id" value="1">
+            @endcan
+        </div>
+        <div>
+            <label>Contraseña: <input type="password" name="password" required></label>
+        </div>
+        <button type="submit">Crear usuario</button>
     </form>
-
 </x-app-layout>

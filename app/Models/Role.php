@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    public function users() {
+    const CLIENTE = 1;
+    const ADMINISTRADOR = 2;
+    const EMPLEADO = 3;
+
+    public function users()
+    {
         return $this->hasMany(User::class);
     }
 }
