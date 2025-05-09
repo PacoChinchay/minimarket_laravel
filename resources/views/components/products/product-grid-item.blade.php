@@ -12,10 +12,6 @@
       {{ $product->name }}
     </h5>
     
-    <p class="text-gray-600 text-base mb-4 line-clamp-3 hidden md:block">
-      {{ $product->description }}
-    </p>
-    
     <div class="mt-auto flex justify-between items-center">
       <span class="font-bold text-base md:text-lg text-[#5c8b2d]">
         {{ number_format($product->price, 2) }} soles
