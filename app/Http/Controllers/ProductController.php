@@ -11,20 +11,20 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::orderBy('id', 'desc')->get();
-        return view('products.index', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
     public function create()
     {
         $categories = Category::all();
-        return view('products.create', compact('categories'));
+        return view('admin.products.create', compact('categories'));
     }
 
     public function show($product)
     {
         $product = Product::with('categories')->find($product);
 
-        return view('products.show', compact('product'));
+        return view('admin.products.show', compact('product'));
     }
 
     public function store(Request $request)
@@ -45,14 +45,15 @@ class ProductController extends Controller
             $product->categories()->attach($request->categories);
         }
 
-        return redirect('/products')->with('success', 'Producto creado correctamente');
+        return redirect()->route('admin.products.index')
+            ->with('success'. 'Producto creado correctamente');
     }
 
     public function edit($product)
     {
         $product = Product::with('categories')->findOrFail($product);
         $categories = Category::all();
-        return view('products.edit', compact('product', 'categories'));
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $product)
@@ -74,7 +75,8 @@ class ProductController extends Controller
             $product->categories()->sync($request->categories);
         }
 
-        return redirect("/products/{$product->id}");
+        return redirect()->route('admin.products.show', $product)
+            ->with('success', 'Producto actualizado');
     }
 
 
@@ -83,6 +85,8 @@ class ProductController extends Controller
         $product = Product::findOrFail($product);
         $product->categories()->detach();
         $product->delete();
-        return redirect("/products")->with('success', 'Producto eliminado');
+
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Producto Eliminado');
     }
 }
