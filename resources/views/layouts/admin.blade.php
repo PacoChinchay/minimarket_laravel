@@ -45,7 +45,7 @@
                 <div class="border-t border-[#5c8b2d] my-4"></div>
 
                 <!-- Logout -->
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('auth.logout') }}">
                     @csrf
                     <button type="submit" 
                             class="w-full flex items-center px-3 py-2.5 text-sm text-white hover:bg-red-600 rounded-lg">
