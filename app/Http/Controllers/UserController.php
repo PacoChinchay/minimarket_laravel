@@ -11,19 +11,25 @@ class UserController extends Controller
 {
     protected $table = 'users';
 
-    public function index() {
+    public function index()
+    {
         $users = User::all();
-        return view('users.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
-    public function create() {
+    public function create()
+    {
         return view('users.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $validated = $request->validate([
-            'role_id' => 'required|in:'.Role::CLIENTE.','.Role::EMPLEADO.','.Role::ADMINISTRADOR
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+            'role_id' => 'required|in:' . Role::CLIENTE . ',' . Role::EMPLEADO . ',' . Role::ADMINISTRADOR
         ]);
 
         $user = new User();
@@ -33,15 +39,17 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
 
         $user->save();
-        return redirect('/users');
+        return redirect()->route('users.index');
     }
 
-    public function edit($user) {
+    public function edit($user)
+    {
         $user = User::find($user);
         return view('users.edit', compact('user'));
     }
 
-    public function update(Request $request, $user) {
+    public function update(Request $request, $user)
+    {
         $user = User::find($user);
         $user->name = $request->name;
         $user->email = $request->email;
@@ -50,10 +58,10 @@ class UserController extends Controller
         return redirect('/users');
     }
 
-    public function destroy($user) {
+    public function destroy($user)
+    {
         $user = User::find($user);
         $user->delete();
         return redirect('/users');
     }
-
 }
