@@ -39,29 +39,37 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
 
         $user->save();
-        return redirect()->route('users.index');
+        return redirect()->route('admin.users.index');
     }
 
     public function edit($user)
     {
         $user = User::find($user);
-        return view('users.edit', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     public function update(Request $request, $user)
     {
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user,
+            'role_id' => 'required|in:1,2,3' // 1:Cliente, 2:Empleado, 3:Admin
+        ]);
+
         $user = User::find($user);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role_id = $request->role_id;
         $user->save();
-        return redirect('/users');
+        
+        return redirect()->route('admin.users.index');
     }
 
     public function destroy($user)
     {
         $user = User::find($user);
         $user->delete();
-        return redirect('/users');
+        return redirect()->route('admin.users.index');
     }
 }
