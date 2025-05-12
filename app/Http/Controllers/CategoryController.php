@@ -10,12 +10,12 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::withCount('products')->get();
-        return view('categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     public function create()
     {
-        return view('categories.create');
+        return view('admin.categories.create');
     }
 
     public function store(Request $request)
@@ -25,13 +25,13 @@ class CategoryController extends Controller
         $category->description = $request->description;
 
         $category->save();
-        return redirect('/categories');
+        return redirect()->route('admin.categories.index');
     }
 
     public function edit($category)
     {
         $category = Category::find($category);
-        return view('categories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     public function update(Request $request, $category)
@@ -42,7 +42,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
 
         $category->save();
-        return redirect('/categories');
+        return redirect()->route('admin.categories.index');
     }
 
     public function destroy($category)
@@ -50,13 +50,13 @@ class CategoryController extends Controller
         $category = Category::find($category);
         $category->delete();
 
-        return redirect('/categories');
+        return redirect()->route('admin.categories.index');
     }
 
     public function show($category)
     {
         $category = Category::find($category);
-        return view('categories.show', compact('category'));
+        return view('admin.categories.show', compact('category'));
     }
 
     public function detachProduct($categoryId, $productId)

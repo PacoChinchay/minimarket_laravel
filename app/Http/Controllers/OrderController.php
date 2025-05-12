@@ -12,7 +12,7 @@ class OrderController extends Controller
 {
 
     public function index() {
-        return view('order.index');
+        return view('admin.orders.index');
     }
 
     public function store(Request $request)
