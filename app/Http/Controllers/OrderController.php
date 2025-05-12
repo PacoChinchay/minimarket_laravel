@@ -12,7 +12,34 @@ class OrderController extends Controller
 {
 
     public function index() {
-        return view('admin.orders.index');
+        $orders = Order::with(['user', 'products'])
+            ->latest()
+            ->paginate(10);
+
+        return view('admin.orders.index', compact('orders'));
+    }
+
+    public function show(Order $order) {
+        $order->load(['user', 'products']);
+        return view('admin.orders.show', compact('order'));
+    }
+
+    public function updateStatus(Request $request, Order $order)
+    {
+        $validated = $request->validate([
+            'status' => 'required|in:pendiente,confirmado,enviado,entregado,cancelado'
+        ]);
+
+        // Si se cancela la orden, reestablecer stock
+        if($request->status === 'cancelado') {
+            foreach($order->products as $product) {
+                $product->increment('stock', $product->pivot->amount);
+            }
+        }
+
+        $order->update(['state' => $validated['status']]);
+
+        return redirect()->back()->with('success', 'Estado actualizado correctamente');
     }
 
     public function store(Request $request)
