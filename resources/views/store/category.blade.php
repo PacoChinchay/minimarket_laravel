@@ -1,4 +1,5 @@
 <x-app-layout>
+  <x-header />
   <div class="px-4 py-8 bg-[#f6fbee] min-h-screen">
     <h1 class="text-2xl font-bold text-[#5c8b2d] mb-6">Productos en la categoría: {{ $category->name }}</h1>
 

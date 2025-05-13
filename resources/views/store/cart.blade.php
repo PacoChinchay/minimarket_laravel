@@ -1,4 +1,9 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('title', 'Nosotros')
+
+@section('content')
+
     <div class="px-6 py-10 bg-[#f6fbee] min-h-screen">
         <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden border border-[#cddbb3] p-6">
             <h1 class="text-2xl font-bold text-[#3a5e1e] mb-6">Tu Carrito de Compras</h1>
@@ -46,7 +51,6 @@
                                 @csrf
                                 <button type="submit" class="text-red-500 hover:text-red-700">
                                     <i class="fas fa-trash"></i>
-                                    eliminar
                                 </button>
                             </form>
                         </div>
@@ -86,4 +90,4 @@
             @endif
         </div>
     </div>
-</x-app-layout>
+@endsection

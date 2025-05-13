@@ -1,5 +1,9 @@
-<x-app-layout>
-    <x-header />
+@extends('layouts.app')
+
+@section('title', 'ORGANIC')
+
+@section('content')
+
     @include('components.home-slider.HomeSlider')
 
     <div class="px-4 sm:px-6 lg:px-8 py-8 md:py-12 bg-[#f6fbee]">
@@ -49,4 +53,4 @@
             @include('components.products.product-grid', ['products' => $featuredProducts])
         </section>
     </div>
-</x-app-layout>
+@endsection

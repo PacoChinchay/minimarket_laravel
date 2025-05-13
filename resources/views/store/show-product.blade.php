@@ -1,4 +1,8 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('title', 'Nosotros')
+
+@section('content')
   <!-- Encabezado del carrito -->
   <div class="flex justify-end items-center px-6 pt-6">
     <a href="{{route('store.cart')}}" class="relative inline-flex items-center bg-[#5c8b2d] text-white px-4 py-2 rounded-full hover:bg-[#3a5e1e] transition">
@@ -110,4 +114,5 @@
       });
     });
   </script>
-</x-app-layout>
+
+@endsection

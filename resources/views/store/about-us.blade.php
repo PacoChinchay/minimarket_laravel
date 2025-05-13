@@ -1,5 +1,9 @@
-<x-app-layout>
-    <x-header />
+@extends('layouts.app')
+
+@section('title', 'Nosotros')
+
+@section('content')
+
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <!-- Sección Hero -->
         <section class="mb-16 text-center">
@@ -101,5 +105,4 @@
             </a>
         </section>
     </main>
-
-</x-app-layout>
+@endsection
