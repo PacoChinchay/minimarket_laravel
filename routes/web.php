@@ -23,14 +23,6 @@ Route::prefix('admin')->middleware(['auth', 'role:' . Role::ADMINISTRADOR])
   ->name('admin.')
   ->group(function () {
 
-    // Route::get('/dashboard', function () {
-    //   return view('admin.dashboard', [
-    //     'totalUsers' => 0,
-    //     'totalProducts' => 0,
-    //     'monthlyOrders' => 0
-    //   ]);
-    // })->name('dashboard');
-
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::controller(ProductController::class)->group(function () {
