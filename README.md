@@ -1,7 +1,5 @@
 # Organic Shop - Roadmap de Aprendizaje
 
-![Proyecto Organic Shop](header-image.jpg)
-
 ## 🎯 Objetivo del Proyecto
 Desarrollar una plataforma e-commerce completa para venta de productos orgánicos, implementando las mejores prácticas de desarrollo web moderno.
 
