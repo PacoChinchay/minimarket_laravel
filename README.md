@@ -4,7 +4,7 @@
 Desarrollar una plataforma e-commerce completa para venta de productos orgánicos, implementando las mejores prácticas de desarrollo web moderno.
 
 ## 🛠 Stack Tecnológico Actual
-- **Laravel 10** (Backend)
+- **Laravel 12** (Backend)
 - **Livewire** (Interactividad full-stack)
 - **Tailwind CSS** (Estilos)
 - **Alpine.js** (Interactividad en frontend)
