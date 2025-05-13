@@ -84,3 +84,8 @@ Route::view('/register', "register")->name('register');
 Route::post('/validate-register', [LoginController::class, 'register'])->name('auth.register');
 Route::post('/star-session', [LoginController::class, 'login'])->name('auth.login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('auth.logout');
+
+// web.php
+Route::get('/prueba-livewire', function(){
+    return view('prueba-livewire');
+});

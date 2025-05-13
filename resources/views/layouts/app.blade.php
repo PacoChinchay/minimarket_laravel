@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'MiniMarket') }} | @yield('title')</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    @stack('styles')
+    <!-- En tu layout, cambia el CDN de AlpineJS a: -->
     @livewireStyles
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @stack('styles')
 </head>
+
 <body class="bg-[#f6fbee]">
     <!-- Header -->
     <div class="flex w-full bg-white">
@@ -20,14 +25,8 @@
                 </a>
             </div>
 
-            <!-- Buscador -->
-            <div class="hidden md:flex items-center gap-2 bg-gray-100 rounded-full px-2 py-2 w-full max-w-md mx-4">
-                <input type="text" placeholder="Encuentra tu producto..."
-                    class="flex-grow bg-transparent outline-none placeholder-gray-500 text-sm ml-2">
-                <button type="submit"
-                    class="bg-[#5C8B2D] hover:bg-[#4a7224] transition-colors text-white font-semibold text-sm px-4 py-2 rounded-full">
-                    Buscar
-                </button>
+            <div class="hidden md:block w-full max-w-md mx-4">
+                <livewire:buscador-producto />
             </div>
 
             <!-- Carrito y Usuario -->
@@ -37,7 +36,8 @@
                     <a href="{{ route('store.cart') }}" class="block relative">
                         <img src="{{ asset('header/cart.svg') }}" alt="Carrito" class="w-8 h-8">
                         @if (count(session('cart', [])) > 0)
-                            <span class="absolute -top-2 -right-2 bg-[#5C8B2D] text-white text-xs font-bold rounded-full px-2 py-0.5">
+                            <span
+                                class="absolute -top-2 -right-2 bg-[#5C8B2D] text-white text-xs font-bold rounded-full px-2 py-0.5">
                                 {{ array_sum(array_column(session('cart'), 'quantity')) }}
                             </span>
                         @endif
@@ -46,26 +46,26 @@
 
                 <!-- Usuario -->
                 @guest
-                <div class="p-2 hover:bg-gray-100 rounded-full transition-colors">
-                    <a href="/login">
-                        <img src="header/user.svg" alt="Usuario" class="w-8 h-8 md:w-6 md:h-6">
-                    </a>
-                </div>
+                    <div class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                        <a href="/login">
+                            <img src="header/user.svg" alt="Usuario" class="w-8 h-8 md:w-6 md:h-6">
+                        </a>
+                    </div>
                 @endguest
 
                 @auth
-                <!-- Menú usuario autenticado -->
-                <div class="flex items-center gap-2">
-                    <div class="hidden md:block text-sm text-gray-600">
-                        Hola, {{ Auth::user()->name }}
+                    <!-- Menú usuario autenticado -->
+                    <div class="flex items-center gap-2">
+                        <div class="hidden md:block text-sm text-gray-600">
+                            Hola, {{ Auth::user()->name }}
+                        </div>
+                        <form action="{{ route('auth.logout') }}" method="POST" class="m-0">
+                            @csrf
+                            <button class="bg-red-500 text-white text-sm px-3 py-2 rounded-lg md:rounded-full">
+                                Salir
+                            </button>
+                        </form>
                     </div>
-                    <form action="{{ route('auth.logout') }}" method="POST" class="m-0">
-                        @csrf
-                        <button class="bg-red-500 text-white text-sm px-3 py-2 rounded-lg md:rounded-full">
-                            Salir
-                        </button>
-                    </form>
-                </div>
                 @endauth
             </div>
         </header>
@@ -84,7 +84,7 @@
         </div>
     </footer>
 
-    
+
     <!-- Contenido principal -->
     <main class="min-h-screen">
         @yield('content')
@@ -93,4 +93,5 @@
     @stack('scripts')
     @livewireScripts
 </body>
+
 </html>
