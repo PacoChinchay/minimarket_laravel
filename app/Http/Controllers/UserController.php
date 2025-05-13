@@ -32,11 +32,12 @@ class UserController extends Controller
             'role_id' => 'required|in:' . Role::CLIENTE . ',' . Role::EMPLEADO . ',' . Role::ADMINISTRADOR
         ]);
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->role_id = $request->role_id;
-        $user->password = Hash::make($request->password);
+       $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'role_id' => $validated['role_id'],
+        ]);
 
         $user->save();
         return redirect()->route('admin.users.index');
@@ -54,7 +55,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user,
-            'role_id' => 'required|in:1,2,3' // 1:Cliente, 2:Empleado, 3:Admin
+            'role_id' => 'required|in:1,2,3'
         ]);
 
         $user = User::find($user);

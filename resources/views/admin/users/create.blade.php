@@ -31,8 +31,8 @@
             <select name="role_id" 
                     class="w-full border border-[#e0e8d5] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#5c8b2d]">
                 <option value="1">Cliente</option>
-                <option value="2">Empleado</option>
-                <option value="3">Administrador</option>
+                <option value="2">Administrador</option>
+                <option value="3">Empleado</option>
             </select>
         </div>
         @else
