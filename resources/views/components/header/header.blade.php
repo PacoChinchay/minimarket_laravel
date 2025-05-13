@@ -21,36 +21,39 @@
         <div class="flex items-center gap-4 md:gap-6 ml-2 md:ml-6">
             <!-- Carrito -->
             <div class="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
-                <a href="store/cart" class="block relative">
+                <a href="{{ route('store.cart') }}" class="block relative">
                     <img src="header/cart.svg" alt="Carrito" class="w-8 h-8">
-                    <span class="absolute -top-2 -right-2 bg-[#5C8B2D] text-white text-xs font-bold rounded-full px-2 py-0.5">
-                        0
-                    </span>
+                    @if (count(session('cart', [])) > 0)
+                        <span
+                            class="absolute -top-2 -right-2 bg-[#5C8B2D] text-white text-xs font-bold rounded-full px-2 py-0.5">
+                            {{ array_sum(array_column(session('cart'), 'quantity')) }}
+                        </span>
+                    @endif
                 </a>
             </div>
 
             <!-- Usuario -->
             @guest
-            <div class="p-2 hover:bg-gray-100 rounded-full transition-colors">
-                <a href="/login">
-                    <img src="header/user.svg" alt="Usuario" class="w-8 h-8 md:w-6 md:h-6">
-                </a>
-            </div>
+                <div class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                    <a href="/login">
+                        <img src="header/user.svg" alt="Usuario" class="w-8 h-8 md:w-6 md:h-6">
+                    </a>
+                </div>
             @endguest
 
             @auth
-            <!-- Menú usuario autenticado -->
-            <div class="flex items-center gap-2">
-                <div class="hidden md:block text-sm text-gray-600">
-                    Hola, {{ Auth::user()->name }}
+                <!-- Menú usuario autenticado -->
+                <div class="flex items-center gap-2">
+                    <div class="hidden md:block text-sm text-gray-600">
+                        Hola, {{ Auth::user()->name }}
+                    </div>
+                    <form action="{{ route('auth.logout') }}" method="POST" class="m-0">
+                        @csrf
+                        <button class="bg-red-500 text-white text-sm px-3 py-2 rounded-lg md:rounded-full">
+                            Salir
+                        </button>
+                    </form>
                 </div>
-                <form action="{{ route('auth.logout') }}" method="POST" class="m-0">
-                    @csrf
-                    <button class="bg-red-500 text-white text-sm px-3 py-2 rounded-lg md:rounded-full">
-                        Salir
-                    </button>
-                </form>
-            </div>
             @endauth
         </div>
     </header>
@@ -61,9 +64,9 @@
     <div class="max-w-5xl mx-auto px-4">
         <nav class="flex justify-around gap-3 md:gap-0 text-[#5C8B2D] font-semibold text-xs md:text-base">
             <a href="/" class="py-1 hover:underline">Inicio</a>
-            <a href="{{route('store.products.index')}}" class="py-1 hover:underline">Productos</a>
+            <a href="{{ route('store.products.index') }}" class="py-1 hover:underline">Productos</a>
             <a href="/offerts" class="py-1 hover:underline">Ofertas</a>
-            <a href={{route('about-us')}} class="py-1 hover:underline">Nosotros</a>
+            <a href={{ route('about-us') }} class="py-1 hover:underline">Nosotros</a>
         </nav>
     </div>
 </footer>

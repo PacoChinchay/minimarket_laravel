@@ -1,7 +1,7 @@
 <x-app-layout>
   <!-- Encabezado del carrito -->
   <div class="flex justify-end items-center px-6 pt-6">
-    <a href="/store/cart" class="relative inline-flex items-center bg-[#5c8b2d] text-white px-4 py-2 rounded-full hover:bg-[#3a5e1e] transition">
+    <a href="{{route('store.cart')}}" class="relative inline-flex items-center bg-[#5c8b2d] text-white px-4 py-2 rounded-full hover:bg-[#3a5e1e] transition">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5H19m-6 0a2 2 0 11-4 0m10 0a2 2 0 11-4 0" />
       </svg>
@@ -61,7 +61,7 @@
           </div>
 
           <!-- Botón Agregar al carrito -->
-          <form action="/store/cart/add" method="POST">
+          <form action="{{route('cart.add', $product)}}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
             <input type="hidden" id="cantidadInputForm" name="quantity" value="1">
@@ -73,7 +73,7 @@
 
         <!-- Botón Volver -->
         <div class="mt-6">
-          <a href="/store/products"
+          <a href="{{route('store.products.index')}}"
              class="inline-block bg-[#5c8b2d] hover:bg-[#3a5e1e] text-white font-semibold py-2 px-4 rounded-xl transition">
             ← Volver a la lista de productos
           </a>

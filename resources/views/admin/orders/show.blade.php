@@ -9,7 +9,7 @@
                <i class="fas fa-arrow-left mr-2"></i> Volver
             </a>
             <h1 class="text-2xl font-bold text-[#3a5e1e]">Orden #{{ $order->id }}</h1>
-            <p class="text-sm text-gray-500 mt-1">{{ $order->date->format('d/m/Y H:i') }}</p>
+            <p class="text-sm text-gray-500 mt-1">{{ \Carbon\Carbon::parse($order->date)->format('d/m/Y H:i') }}</p>
         </div>
         
         <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="flex items-center gap-2">

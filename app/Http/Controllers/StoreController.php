@@ -32,4 +32,8 @@ class StoreController extends Controller
     public function aboutUs() {
         return view('store.about-us');
     }
+
+    public function cart() {
+        return view('store.cart');
+    }
 }

@@ -57,7 +57,7 @@ class OrderController extends Controller
             $total = 0;
         
             $order = Order::create([
-                'user_id' => $request->input('user_id'), // viene desde el formulario
+                'user_id' => $request->input('user_id'), 
                 'total' => 0,
                 'state' => 'pendiente',
                 'date' => now(),

@@ -27,7 +27,7 @@
                         <div class="text-sm text-gray-500">{{ $order->user->email }}</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                        {{ $order->date->format('d/m/Y H:i') }}
+                        {{ \Carbon\Carbon::parse($order->date)->format('d/m/Y H:i') }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         S/ {{ number_format($order->total, 2) }}

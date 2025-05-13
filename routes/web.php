@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AlumnosController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -63,16 +64,23 @@ Route::prefix('admin')->middleware(['auth', 'role:' . Role::ADMINISTRADOR])
     });
 
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}',[OrderController::class, 'show'])->name(('orders.show'));
+    Route::post('/orders/{order}',[OrderController::class, 'updateStatus'])->name(('orders.update-status'));
   });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/store/cart', [CartController::class, 'index'])->name('store.cart');
+    Route::post('/store/cart/add', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/store/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::post('/store/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/store/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+});
 
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store')->middleware('auth');
 
 Route::view('/login', "login")->name('login');
 Route::view('/register', "register")->name('register');
-Route::view('/welcome', "welcome")->middleware('auth')->name('welcome');
 
 Route::post('/validate-register', [LoginController::class, 'register'])->name('auth.register');
 Route::post('/star-session', [LoginController::class, 'login'])->name('auth.login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('auth.logout');
-
-Route::get('/hello', [AlumnosController::class, 'hello']);
