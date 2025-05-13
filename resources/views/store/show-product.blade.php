@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Nosotros')
+@section('title', 'Producto')
 
 @section('content')
   <!-- Encabezado del carrito -->

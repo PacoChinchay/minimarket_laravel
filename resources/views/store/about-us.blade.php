@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="order-1 md:order-2">
-                <img src="https://via.placeholder.com/600x400" alt="Nuestra historia" 
+                <img src="/about/team_work.jpg" alt="Nuestra historia" 
                      class="w-full h-auto rounded-2xl shadow-lg">
             </div>
         </section>
@@ -70,7 +70,7 @@
             <h2 class="text-3xl font-bold text-[#3a5e1e] mb-12 text-center">Nuestro Equipo</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white p-6 rounded-xl text-center">
-                    <img src="https://via.placeholder.com/200x200" alt="Miembro del equipo" 
+                    <img src="/about/maria.jpg" alt="Miembro del equipo" 
                          class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-[#cddbb3]">
                     <h3 class="text-xl font-semibold text-[#3a5e1e]">María Pérez</h3>
                     <p class="text-[#5c8b2d] mb-2">Gerente General</p>
@@ -78,7 +78,7 @@
                 </div>
                 
                 <div class="bg-white p-6 rounded-xl text-center">
-                    <img src="https://via.placeholder.com/200x200" alt="Miembro del equipo" 
+                    <img src="/about/carlos.jpg" alt="Miembro del equipo" 
                          class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-[#cddbb3]">
                     <h3 class="text-xl font-semibold text-[#3a5e1e]">Carlos Rojas</h3>
                     <p class="text-[#5c8b2d] mb-2">Jefe de Abastecimiento</p>
@@ -86,7 +86,7 @@
                 </div>
                 
                 <div class="bg-white p-6 rounded-xl text-center">
-                    <img src="https://via.placeholder.com/200x200" alt="Miembro del equipo" 
+                    <img src="/about/lucia.jpg" alt="Miembro del equipo" 
                          class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-[#cddbb3]">
                     <h3 class="text-xl font-semibold text-[#3a5e1e]">Lucía Mendoza</h3>
                     <p class="text-[#5c8b2d] mb-2">Atención al Cliente</p>

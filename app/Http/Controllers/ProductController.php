@@ -46,7 +46,7 @@ class ProductController extends Controller
         }
 
         return redirect()->route('admin.products.index')
-            ->with('success'. 'Producto creado correctamente');
+            ->with('success' . 'Producto creado correctamente');
     }
 
     public function edit($product)
@@ -88,5 +88,17 @@ class ProductController extends Controller
 
         return redirect()->route('admin.products.index')
             ->with('success', 'Producto Eliminado');
+    }
+
+    public function buscar(Request $request)
+    {
+        $term = $request->input('q');
+
+        $productos = Product::where('name', 'LIKE', "%{$term}%")
+            ->orWhere('description', 'LIKE', "%{$term}%")
+            ->take(8)
+            ->get(['id', 'name', 'image', 'price']);
+
+        return response()->json($productos);
     }
 }

@@ -23,15 +23,15 @@ Route::prefix('admin')->middleware(['auth', 'role:' . Role::ADMINISTRADOR])
   ->name('admin.')
   ->group(function () {
 
-    Route::get('/dashboard', function () {
-      return view('admin.dashboard', [
-        'totalUsers' => 0,
-        'totalProducts' => 0,
-        'monthlyOrders' => 0
-      ]);
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //   return view('admin.dashboard', [
+    //     'totalUsers' => 0,
+    //     'totalProducts' => 0,
+    //     'monthlyOrders' => 0
+    //   ]);
+    // })->name('dashboard');
 
-    // Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::controller(ProductController::class)->group(function () {
       Route::get('/products', 'index')->name('products.index');
@@ -85,7 +85,8 @@ Route::post('/validate-register', [LoginController::class, 'register'])->name('a
 Route::post('/star-session', [LoginController::class, 'login'])->name('auth.login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
-// web.php
 Route::get('/prueba-livewire', function(){
     return view('prueba-livewire');
 });
+
+Route::get('/buscar-productos', [ProductController::class, 'buscar'])->name('productos.buscar');
