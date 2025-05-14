@@ -18,7 +18,6 @@ class QuantitySelector extends Component
     public function addToCart()
     {
         if($this->product->stock >= $this->quantity) {
-            // Lógica para agregar al carrito
             $this->emit('cartUpdated');
             $this->dispatchBrowserEvent('notify', 
                 ['message' => 'Producto agregado al carrito!', 'type' => 'success']);

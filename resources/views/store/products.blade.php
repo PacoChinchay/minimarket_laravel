@@ -6,7 +6,6 @@
 
     <div class="bg-[#f6fbee] min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
-            <!-- Header con botón de volver -->
             <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
                 <a href={{route('store.index')}} class="order-2 md:order-1 w-fit inline-flex items-center text-[#5c8b2d] hover:text-[#3a5e1e] transition-colors group">
                     <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -18,20 +17,17 @@
             </div>
 
             @if ($products->count())
-                <!-- Grid de productos -->
                 <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                     @foreach ($products as $product)
                         <a href="/store/products/{{ $product->id }}" 
                            class="bg-white group relative rounded-xl md:rounded-2xl border border-[#cddbb3] hover:border-[#9bb072] shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
                             
-                            <!-- Imagen del producto -->
                             <div class="aspect-square w-full bg-gray-100 overflow-hidden">
                                 <img src="{{ asset('products/' . $product->image) }}" 
                                      alt="{{ $product->name }}" 
                                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             </div>
 
-                            <!-- Contenido -->
                             <div class="p-4 md:p-5">
                                 <h3 class="text-base md:text-lg font-semibold text-[#5c8b2d] mb-1 line-clamp-2">
                                     {{ $product->name }}
@@ -40,7 +36,6 @@
                                     S/ {{ number_format($product->price, 2) }}
                                 </p>
                                 
-                                <!-- Categorías -->
                                 <div class="flex flex-wrap gap-2">
                                     @foreach ($product->categories as $category)
                                         <span class="bg-[#eaf0da] text-[#5c8b2d] text-xs md:text-sm px-2.5 py-1 rounded-full">
@@ -53,12 +48,10 @@
                     @endforeach
                 </div>
 
-                <!-- Paginación -->
                 <div class="mt-8 md:mt-12 px-4">
                     {{ $products->links() }}
                 </div>
             @else
-                <!-- Estado vacío -->
                 <div class="text-center py-12 md:py-16">
                     <div class="max-w-md mx-auto">
                         <svg class="mx-auto h-12 w-12 text-[#cddbb3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

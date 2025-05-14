@@ -21,12 +21,10 @@
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         @foreach($products as $product)
-            <!-- Tarjeta de producto existente -->
             @include('components.products.product-grid', ['product' => $product])
         @endforeach
     </div>
 
-    <!-- Paginación -->
     <div class="mt-6">
         {{ $products->links() }}
     </div>

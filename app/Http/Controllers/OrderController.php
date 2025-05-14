@@ -30,7 +30,6 @@ class OrderController extends Controller
             'status' => 'required|in:pendiente,confirmado,enviado,entregado,cancelado'
         ]);
 
-        // Si se cancela la orden, reestablecer stock
         if($request->status === 'cancelado') {
             foreach($order->products as $product) {
                 $product->increment('stock', $product->pivot->amount);
@@ -76,7 +75,6 @@ class OrderController extends Controller
                     'price' => $product->price,
                 ]);
 
-                // Restar el stock
                 $product->decrement('stock', $item['amount']);
                 $total += $subtotal;
             }

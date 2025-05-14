@@ -27,7 +27,7 @@ class BuscadorProducto extends Component
                     $query->where('name', 'LIKE', $searchTerm)
                           ->orWhere('description', 'LIKE', $searchTerm);
                 })
-                // ->where('stock', '>', 0) // Solo productos con stock
+                ->where('stock', '>', 0)
                 ->with('categories')
                 ->orderBy('name')
                 ->take(8)

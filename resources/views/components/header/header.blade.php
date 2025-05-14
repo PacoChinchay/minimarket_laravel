@@ -1,13 +1,11 @@
 <div class="flex w-full bg-white">
     <header class="flex justify-between items-center w-full max-w-7xl h-[70px] md:h-[80px] mx-auto px-3 sm:px-4">
-        <!-- Logo Mobile -->
         <div class="flex items-center md:flex-grow-0 flex-grow">
             <a href="/" class="flex items-center">
                 <img src="header/logo.png" alt="Logo" class="h-12 md:h-16 object-contain">
             </a>
         </div>
 
-        <!-- Buscador (Oculto en mobile) -->
         <div class="hidden md:flex items-center gap-2 bg-gray-100 rounded-full px-2 py-2 w-full max-w-md mx-4">
             <input type="text" placeholder="Encuentra tu producto..."
                 class="flex-grow bg-transparent outline-none placeholder-gray-500 text-sm ml-2">
@@ -17,9 +15,7 @@
             </button>
         </div>
 
-        <!-- Carrito y Usuario -->
         <div class="flex items-center gap-4 md:gap-6 ml-2 md:ml-6">
-            <!-- Carrito -->
             <div class="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
                 <a href="{{ route('store.cart') }}" class="block relative">
                     <img src="header/cart.svg" alt="Carrito" class="w-8 h-8">
@@ -32,7 +28,6 @@
                 </a>
             </div>
 
-            <!-- Usuario -->
             @guest
                 <div class="p-2 hover:bg-gray-100 rounded-full transition-colors">
                     <a href="/login">
@@ -42,7 +37,6 @@
             @endguest
 
             @auth
-                <!-- Menú usuario autenticado -->
                 <div class="flex items-center gap-2">
                     <div class="hidden md:block text-sm text-gray-600">
                         Hola, {{ Auth::user()->name }}
@@ -59,7 +53,6 @@
     </header>
 </div>
 
-<!-- Footer Mobile -->
 <footer class="w-full bg-[#f6edd9] py-4 shadow-md">
     <div class="max-w-5xl mx-auto px-4">
         <nav class="flex justify-around gap-3 md:gap-0 text-[#5C8B2D] font-semibold text-xs md:text-base">

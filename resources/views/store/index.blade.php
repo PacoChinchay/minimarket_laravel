@@ -7,7 +7,6 @@
     @include('components.home-slider.HomeSlider')
 
     <div class="px-4 sm:px-6 lg:px-8 py-8 md:py-12 bg-[#f6fbee]">
-        <!-- Sección de Categorías -->
         <section class="mb-12 md:mb-16">
             <div class="max-w-7xl mx-auto">
                 <h2 class="text-2xl md:text-3xl font-bold text-[#3a5e1e] mb-6 md:mb-8">Explora nuestras categorías</h2>
@@ -47,7 +46,6 @@
             </div>
         </section>
 
-        <!-- Productos destacados -->
         <section class="max-w-7xl mx-auto">
             <h2 class="text-2xl md:text-3xl font-bold text-[#3a5e1e] mb-6 md:mb-8">Productos destacados</h2>
             @include('components.products.product-grid', ['products' => $featuredProducts])

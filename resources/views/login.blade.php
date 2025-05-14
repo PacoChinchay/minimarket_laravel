@@ -1,7 +1,6 @@
 <x-app-layout>
   <div class="min-h-screen flex items-center justify-center bg-[#f6fbee] px-4">
     <div class="w-full max-w-md">
-      <!-- Botón Volver -->
       <div class="mb-6 text-center">
         <a href="{{ route('store.index') }}" class="inline-flex items-center text-[#5c8b2d] hover:text-[#3a5e1e] transition-colors">
           <i class="fas fa-arrow-left mr-2"></i>
@@ -48,7 +47,6 @@
           Acceder
         </button>
 
-        <!-- Enlace a Registro -->
         <div class="mt-4 text-center text-sm">
           <span class="text-[#84976d]">¿No tienes cuenta? </span>
           <a href="{{ route('register') }}" class="text-[#5c8b2d] font-semibold hover:underline">Regístrate</a>

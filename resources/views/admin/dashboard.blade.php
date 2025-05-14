@@ -4,7 +4,6 @@
 
 @section('content')
 <div class="space-y-6">
-    <!-- Estadísticas Rápidas -->
     <div class="bg-white rounded-xl shadow p-6">
         <h1 class="text-2xl font-bold text-[#3a5e1e] mb-4">Estadísticas Generales</h1>
         
@@ -31,7 +30,6 @@
         </div>
     </div>
 
-    <!-- Últimos Pedidos -->
     <div class="bg-white rounded-xl shadow p-6">
         <h2 class="text-xl font-bold text-[#3a5e1e] mb-4">Últimos Pedidos</h2>
         

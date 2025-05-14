@@ -7,7 +7,6 @@
             x-on:focus="open = true"
             placeholder="Buscar productos..."
             class="flex-grow bg-transparent outline-none placeholder-gray-500 text-sm"
-            {{-- wire:keyup.escape="resetSearch" --}}
         >
     </div>
 

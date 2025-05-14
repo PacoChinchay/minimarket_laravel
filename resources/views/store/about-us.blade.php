@@ -5,7 +5,6 @@
 @section('content')
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Sección Hero -->
         <section class="mb-16 text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-[#3a5e1e] mb-6">
                 Más que un minimarket,<br>somos parte de tu comunidad
@@ -15,7 +14,6 @@
             </p>
         </section>
 
-        <!-- Nuestra Historia -->
         <section class="mb-16 grid md:grid-cols-2 gap-12 items-center">
             <div class="order-2 md:order-1">
                 <h2 class="text-3xl font-bold text-[#3a5e1e] mb-6">Nuestra Historia</h2>
@@ -35,7 +33,6 @@
             </div>
         </section>
 
-        <!-- Nuestros Valores -->
         <section class="mb-16">
             <h2 class="text-3xl font-bold text-[#3a5e1e] mb-12 text-center">Lo que nos hace diferentes</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -65,7 +62,6 @@
             </div>
         </section>
 
-        <!-- Equipo -->
         <section class="mb-16">
             <h2 class="text-3xl font-bold text-[#3a5e1e] mb-12 text-center">Nuestro Equipo</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -95,7 +91,6 @@
             </div>
         </section>
 
-        <!-- Llamado a la acción -->
         <section class="bg-[#3a5e1e] text-white rounded-2xl p-8 md:p-12 text-center">
             <h2 class="text-3xl font-bold mb-4">¡Visítanos hoy!</h2>
             <p class="text-xl mb-6">Estamos en Av. Siempre Viva 123, Local 5</p>

@@ -4,7 +4,6 @@
              x-data="{ open: true }"
              x-show="open"
              x-transition>
-            <!-- ... Contenido existente ... -->
             <button @click="open = false; $wire.removeItem({{ $item['id'] }})">
                 <i class="fas fa-trash text-red-500"></i>
             </button>

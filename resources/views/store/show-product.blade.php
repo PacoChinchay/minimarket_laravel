@@ -3,7 +3,6 @@
 @section('title', 'Producto')
 
 @section('content')
-  <!-- Encabezado del carrito -->
   <div class="flex justify-end items-center px-6 pt-6">
     <a href="{{route('store.cart')}}" class="relative inline-flex items-center bg-[#5c8b2d] text-white px-4 py-2 rounded-full hover:bg-[#3a5e1e] transition">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -16,12 +15,10 @@
   <div class="px-6 py-10 bg-[#f6fbee] min-h-screen">
     <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden border border-[#cddbb3] md:flex">
       
-      <!-- Imagen del producto -->
       <div class="md:w-1/2 h-80 md:h-auto">
         <img src="{{ asset('products/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
       </div>
 
-      <!-- Detalles del producto -->
       <div class="md:w-1/2 p-6 flex flex-col justify-between">
         <div>
           <h1 class="text-3xl font-bold text-[#5c8b2d] mb-4">{{ $product->name }}</h1>
@@ -43,7 +40,6 @@
             </p>
           </div>
 
-          <!-- Sección de cantidad -->
           <div class="mt-4">
             <label for="cantidad" class="block font-semibold text-[#5c8b2d] mb-1">Cantidad (Stock: {{ $product->stock }}):</label>
             <input 
@@ -57,14 +53,12 @@
             <p id="stockAlert" class="text-sm text-red-600 mt-1 hidden">No hay suficiente stock disponible</p>
           </div>
 
-          <!-- Precio total -->
           <div class="mt-3 mb-4">
             <p class="text-md font-bold text-[#3a5e1e]">
               Total: <span id="precioTotal">{{ number_format($product->price, 2) }}</span> soles
             </p>
           </div>
 
-          <!-- Botón Agregar al carrito -->
           <form action="{{route('cart.add', $product)}}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -75,7 +69,6 @@
           </form>
         </div>
 
-        <!-- Botón Volver -->
         <div class="mt-6">
           <a href="{{route('store.products.index')}}"
              class="inline-block bg-[#5c8b2d] hover:bg-[#3a5e1e] text-white font-semibold py-2 px-4 rounded-xl transition">
@@ -86,7 +79,6 @@
     </div>
   </div>
 
-  <!-- Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const precioUnitario = parseFloat(document.getElementById('precioUnitario').innerText.replace(',', ''));
