@@ -61,12 +61,6 @@
                         <summary class="bg-[#e0e8d5] text-[#3a5e1e] font-medium p-4 cursor-pointer">Descripción</summary>
                         <div class="p-4 text-gray-700">{{ $product->description }}</div>
                     </details>
-
-                    <details class="bg-[#f6fbee] rounded-lg overflow-hidden">
-                        <summary class="bg-[#e0e8d5] text-[#3a5e1e] font-medium p-4 cursor-pointer">Zonas de delivery</summary>
-                        <div class="p-4 text-gray-700">
-                        </div>
-                    </details>
                 </div>
             </div>
         </div>

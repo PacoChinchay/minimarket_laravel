@@ -31,7 +31,7 @@
                 </label>
                 @endforeach
             </div>
-            <a href="/categories/create" class="text-sm text-[#5c8b2d] hover:underline mt-2 inline-block">
+            <a href="{{route('admin.categories.create')}}" class="text-sm text-[#5c8b2d] hover:underline mt-2 inline-block">
                 + Agregar categoría
             </a>
         </div>

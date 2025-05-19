@@ -2,7 +2,7 @@
 @section('title', 'Crear categoría')
 @section('content')
 <div class="bg-white rounded-2xl shadow-md p-6 max-w-2xl mx-auto border border-[#e0e8d5]">
-    <a href="{{ route('admin.categories.index') }}" 
+    <a href="{{ url()->previous() !== url()->current() ? url()->previous() : route('admin.categories.index') }}"  
        class="inline-flex items-center text-[#5c8b2d] hover:text-[#3a5e1e] mb-4">
        <i class="fas fa-arrow-left mr-2"></i> Volver
     </a>
