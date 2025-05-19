@@ -6,6 +6,8 @@
 
     @include('components.home-slider.HomeSlider')
 
+    @livewire('popular-products')
+
     <div class="px-4 sm:px-6 lg:px-8 py-8 md:py-12 bg-[#f6fbee]">
         <section class="mb-12 md:mb-16">
             <div class="max-w-7xl mx-auto">

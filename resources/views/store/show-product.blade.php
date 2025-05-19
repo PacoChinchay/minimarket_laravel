@@ -3,14 +3,6 @@
 @section('title', 'Producto')
 
 @section('content')
-  <div class="flex justify-end items-center px-6 pt-6">
-    <a href="{{route('store.cart')}}" class="relative inline-flex items-center bg-[#5c8b2d] text-white px-4 py-2 rounded-full hover:bg-[#3a5e1e] transition">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5H19m-6 0a2 2 0 11-4 0m10 0a2 2 0 11-4 0" />
-      </svg>
-      Carrito
-    </a>
-  </div>
 
   <div class="px-6 py-10 bg-[#f6fbee] min-h-screen">
     <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden border border-[#cddbb3] md:flex">

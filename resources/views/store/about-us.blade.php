@@ -94,10 +94,6 @@
         <section class="bg-[#3a5e1e] text-white rounded-2xl p-8 md:p-12 text-center">
             <h2 class="text-3xl font-bold mb-4">¡Visítanos hoy!</h2>
             <p class="text-xl mb-6">Estamos en Av. Siempre Viva 123, Local 5</p>
-            <a href="/products" 
-               class="inline-block bg-white text-[#3a5e1e] px-8 py-3 rounded-full font-semibold hover:bg-[#eaf0da] transition-colors">
-                Ver productos
-            </a>
         </section>
     </main>
 @endsection
