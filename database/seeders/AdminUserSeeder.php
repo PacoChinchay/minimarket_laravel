@@ -14,11 +14,22 @@ class AdminUserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+        $users = [[
             'name' => 'Admin',
             'email' => 'admin@test.com',
             'password' => bcrypt('password'),
             'role_id' => Role::ADMINISTRADOR
-        ]);
+        ],
+        [
+            'name' => 'Test',
+            'email' => 'test@test.com',
+            'password' => bcrypt('password'),
+            'role_id' => Role::CLIENTE
+        ]
+        ];
+
+        foreach ($users as $user) {
+            User::create($user);
+        }
     }
 }

@@ -17,8 +17,7 @@ class PopularProducts extends Component
 
     public function loadProducts()
     {
-        $this->products = Product::query()
-            ->inRandomOrder()
+        $this->products = Product::orderByDesc('views')
             ->limit(4)
             ->get();
     }

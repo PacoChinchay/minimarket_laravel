@@ -21,6 +21,8 @@ class StoreController extends Controller
     }
 
     public function showProduct(Product $product) {
+        $product->increment('views');
+
         return view('store.show-product', compact('product'));
     }
 
