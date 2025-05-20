@@ -49,7 +49,7 @@
         </section>
 
         <section class="max-w-7xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold text-[#3a5e1e] mb-6 md:mb-8">Productos destacados</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-[#3a5e1e] mb-6 md:mb-8">Todos los productos</h2>
             @include('components.products.product-grid', ['products' => $featuredProducts])
         </section>
     </div>

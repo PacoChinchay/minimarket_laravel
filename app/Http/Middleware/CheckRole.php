@@ -21,6 +21,8 @@ class CheckRole
             return redirect()->route('login');
         }
 
+        $roles = array_map('intval', $roles);
+
         $userRole = Auth::user()->role_id;
 
         if (!in_array($userRole, $roles)) {

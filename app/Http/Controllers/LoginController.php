@@ -12,9 +12,10 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    public function register(RegisterLoginRequest $request) {
+    public function register(RegisterLoginRequest $request)
+    {
         $validated = $request->validated();
-    
+
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
@@ -23,11 +24,12 @@ class LoginController extends Controller
         ]);
 
         Auth::login($user);
-        
+
         return redirect()->route('store.index');
     }
 
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $validated = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string'
@@ -43,7 +45,13 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
-            if (Auth::user()->role_id === Role::ADMINISTRADOR){ 
+            $user = Auth::user();
+
+            if (in_array($user->role_id, [
+                Role::ADMINISTRADOR,
+                Role::VENDEDOR,
+                Role::REPARTIDOR
+            ])) {
                 return redirect()->route('admin.dashboard');
             }
 
@@ -55,7 +63,8 @@ class LoginController extends Controller
         ]);
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         Auth::logout();
 
         $request->session()->invalidate();

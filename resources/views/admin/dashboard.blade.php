@@ -7,25 +7,40 @@
     <div class="bg-white rounded-xl shadow p-6">
         <h1 class="text-2xl font-bold text-[#3a5e1e] mb-4">Estadísticas Generales</h1>
         
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
             <div class="bg-[#f6fbee] p-4 rounded-lg">
                 <p class="text-gray-600">Usuarios registrados</p>
                 <p class="text-2xl font-bold text-[#5c8b2d]">{{ number_format($totalUsers) }}</p>
             </div>
-            
+
             <div class="bg-[#f6fbee] p-4 rounded-lg">
                 <p class="text-gray-600">Productos activos</p>
                 <p class="text-2xl font-bold text-[#5c8b2d]">{{ number_format($activeProducts) }}</p>
             </div>
-            
+
             <div class="bg-[#f6fbee] p-4 rounded-lg">
-                <p class="text-gray-600">Pedidos este mes</p>
+                <p class="text-gray-600">Pedidos del mes</p>
                 <p class="text-2xl font-bold text-[#5c8b2d]">{{ number_format($monthlyOrders) }}</p>
             </div>
-            
+
             <div class="bg-[#f6fbee] p-4 rounded-lg">
-                <p class="text-gray-600">Ingresos mensuales</p>
+                <p class="text-gray-600">Ingresos</p>
                 <p class="text-2xl font-bold text-[#5c8b2d]">S/ {{ number_format($revenue, 2) }}</p>
+            </div>
+
+            <div class="bg-[#f6fbee] p-4 rounded-lg">
+                <p class="text-gray-600">Coste</p>
+                <p class="text-2xl font-bold text-[#5c8b2d]">S/ {{ number_format($cogs, 2) }}</p>
+            </div>
+
+            <div class="bg-[#f6fbee] p-4 rounded-lg">
+                <p class="text-gray-600">bruto</p>
+                <p class="text-2xl font-bold text-[#5c8b2d]">S/ {{ number_format($grossProfit, 2) }}</p>
+            </div>
+
+            <div class="bg-[#f6fbee] p-4 rounded-lg">
+                <p class="text-gray-600">neto</p>
+                <p class="text-2xl font-bold text-[#5c8b2d]">S/ {{ number_format($netProfit, 2) }}</p>
             </div>
         </div>
     </div>

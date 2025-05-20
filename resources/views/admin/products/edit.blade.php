@@ -41,6 +41,12 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
+                <label class="block text-gray-700 font-medium mb-2">Costo (S/)</label>
+                <input type="number" name="buy" step="0.01" min="0" value="{{ $product->buy }}" required
+                       class="w-full border border-[#e0e8d5] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#5c8b2d]">
+            </div>
+
+            <div>
                 <label class="block text-gray-700 font-medium mb-2">Precio (S/)</label>
                 <input type="number" name="price" step="0.01" min="0" value="{{ $product->price }}" required
                        class="w-full border border-[#e0e8d5] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#5c8b2d]">

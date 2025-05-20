@@ -19,46 +19,57 @@ Route::get('/store/products/{product}', [StoreController::class, 'showProduct'])
 Route::get('/store/categories/{category}', [StoreController::class, 'category'])->name('store.categories.show');
 Route::get('/about-us', [StoreController::class, 'aboutUs'])->name('about-us');
 
-Route::prefix('admin')->middleware(['auth', 'role:' . Role::ADMINISTRADOR])
-  ->name('admin.')
-  ->group(function () {
+Route::prefix('admin')->middleware([
+    'auth',
+    'role:' . implode(',', [Role::ADMINISTRADOR, Role::VENDEDOR, Role::REPARTIDOR])
+])->name('admin.')->group(function () {
 
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
-    Route::controller(ProductController::class)->group(function () {
-      Route::get('/products', 'index')->name('products.index');
-      Route::get('/products/create', 'create')->name('products.create');
-      Route::post('/products', 'store')->name('products.store');
-      Route::get('/products/{product}', 'show')->name('products.show');
-      Route::get('/products/{product}/edit', 'edit')->name('products.edit');
-      Route::put('/products/{product}', 'update')->name('products.update');
-      Route::delete('/products/{product}', 'destroy')->name('products.destroy');
-    });
+    Route::middleware(['role:' . implode(',', [Role::ADMINISTRADOR, Role::VENDEDOR])])
+        ->controller(ProductController::class)->group(function () {
+            Route::get('/products', 'index')->name('products.index');
+            Route::get('/products/create', 'create')->name('products.create');
+            Route::post('/products', 'store')->name('products.store');
+            Route::get('/products/{product}', 'show')->name('products.show');
+            Route::get('/products/{product}/edit', 'edit')->name('products.edit');
+            Route::put('/products/{product}', 'update')->name('products.update');
+            Route::delete('/products/{product}', 'destroy')->name('products.destroy');
+        });
 
-    Route::controller(UserController::class)->group(function () {
-      Route::get('/users', 'index')->name('users.index');
-      Route::get('/users/create', 'create')->name('users.create');
-      Route::post('/users', 'store')->name('users.store');
-      Route::get('/users/{user}/edit', 'edit')->name('users.edit');
-      Route::put('/users/{user}', 'update')->name('users.update');
-      Route::delete('/users/{user}', 'destroy')->name('users.destroy');
-    });
+    Route::middleware(['role:' . Role::ADMINISTRADOR])
+        ->controller(UserController::class)->group(function () {
+            Route::get('/users', 'index')->name('users.index');
+            Route::get('/users/create', 'create')->name('users.create');
+            Route::post('/users', 'store')->name('users.store');
+            Route::get('/users/{user}/edit', 'edit')->name('users.edit');
+            Route::put('/users/{user}', 'update')->name('users.update');
+            Route::delete('/users/{user}', 'destroy')->name('users.destroy');
+        });
 
-    Route::controller(CategoryController::class)->group(function () {
-      Route::get('/categories', 'index')->name('categories.index');
-      Route::get('/categories/create', 'create')->name('categories.create');
-      Route::post('/categories', 'store')->name('categories.store');
-      Route::get('/categories/{category}', 'show')->name('categories.show');
-      Route::get('/categories/{category}/edit', 'edit')->name('categories.edit');
-      Route::put('/categories/{category}', 'update')->name('categories.update');
-      Route::delete('/categories/{category}', 'destroy')->name('categories.destroy');
-      Route::delete('/categories/{category}/products/{product}', 'detachProduct')->name('categories.products.detach');
-    });
+    Route::middleware(['role:' . implode(',', [Role::ADMINISTRADOR, Role::VENDEDOR])])
+        ->controller(CategoryController::class)->group(function () {
+            Route::get('/categories', 'index')->name('categories.index');
+            Route::get('/categories/create', 'create')->name('categories.create');
+            Route::post('/categories', 'store')->name('categories.store');
+            Route::get('/categories/{category}', 'show')->name('categories.show');
+            Route::get('/categories/{category}/edit', 'edit')->name('categories.edit');
+            Route::put('/categories/{category}', 'update')->name('categories.update');
+            Route::delete('/categories/{category}', 'destroy')->name('categories.destroy');
+            Route::delete('/categories/{category}/products/{product}', 'detachProduct')->name('categories.products.detach');
+        });
 
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-    Route::get('/orders/{order}',[OrderController::class, 'show'])->name(('orders.show'));
-    Route::post('/orders/{order}',[OrderController::class, 'updateStatus'])->name(('orders.update-status'));
-  });
+    Route::prefix('orders')->group(function () {
+        Route::get('/', [OrderController::class, 'index'])
+            ->name('orders.index');
+
+        Route::get('/{order}', [OrderController::class, 'show'])->name('orders.show');
+
+        Route::post('/{order}', [OrderController::class, 'updateStatus'])
+            ->middleware(['role:' . implode(',', [Role::ADMINISTRADOR, Role::REPARTIDOR])])
+            ->name('orders.update-status');
+    });
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/store/cart', [CartController::class, 'index'])->name('store.cart');
@@ -77,7 +88,7 @@ Route::post('/validate-register', [LoginController::class, 'register'])->name('a
 Route::post('/star-session', [LoginController::class, 'login'])->name('auth.login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
-Route::get('/prueba-livewire', function(){
+Route::get('/prueba-livewire', function () {
     return view('prueba-livewire');
 });
 

@@ -31,7 +31,8 @@
                     class="w-full border border-[#e0e8d5] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#5c8b2d]">
                     <option value="1" {{ $user->role_id == 1 ? 'selected' : '' }}>Cliente</option>
                     <option value="2" {{ $user->role_id == 2 ? 'selected' : '' }}>Administrador</option>
-                    <option value="3" {{ $user->role_id == 3 ? 'selected' : '' }}>Empleado</option>
+                    <option value="3" {{ $user->role_id == 3 ? 'selected' : '' }}>Vendedor</option>
+                    <option value="3" {{ $user->role_id == 4 ? 'selected' : '' }}>Repartidor</option>
                 </select>
             </div>
 
